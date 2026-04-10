@@ -31,21 +31,20 @@ def _prepare(regex, flags):
 
 def re_iter(regex, s, flags=0):
     """Iterates over matches of regex in s, presents them in simplest possible form"""
-    regex, getter = _prepare(regex, flags)
-    return map(getter, regex.finditer(s))
+    pass
 
 def re_all(regex, s, flags=0):
     """Lists all matches of regex in s, presents them in simplest possible form"""
-    return list(re_iter(regex, s, flags))
+    pass
 
 def re_find(regex, s, flags=0):
     """Matches regex against the given string,
        returns the match in the simplest possible form."""
-    return re_finder(regex, flags)(s)
+    pass
 
 def re_test(regex, s, flags=0):
     """Tests whether regex matches against s."""
-    return re_tester(regex, flags)(s)
+    pass
 
 
 def re_finder(regex, flags=0):
@@ -64,10 +63,7 @@ def re_tester(regex, flags=0):
 def str_join(sep, seq=EMPTY):
     """Joins the given sequence with sep.
        Forces stringification of seq items."""
-    if seq is EMPTY:
-        return str_join('', sep)
-    else:
-        return sep.join(map(sep.__class__, seq))
+    pass
 
 def cut_prefix(s, prefix):
     """Cuts prefix from given string if it's present."""
@@ -75,4 +71,4 @@ def cut_prefix(s, prefix):
 
 def cut_suffix(s, suffix):
     """Cuts suffix from given string if it's present."""
-    return s[:-len(suffix)] if s.endswith(suffix) else s
+    pass

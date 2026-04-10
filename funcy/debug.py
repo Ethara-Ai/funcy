@@ -22,11 +22,7 @@ REPR_LEN = 25
 
 def tap(x, label=None):
     """Prints x and then returns it."""
-    if label:
-        print('%s: %s' % (label, x))
-    else:
-        print(x)
-    return x
+    pass
 
 
 @decorator
@@ -56,38 +52,22 @@ print_calls.__doc__ = log_calls.__doc__
 @decorator
 def log_enters(call, print_func, repr_len=REPR_LEN):
     """Logs each entrance to a function."""
-    print_func('Call %s' % signature_repr(call, repr_len))
-    return call()
+    pass
 
 
 def print_enters(repr_len=REPR_LEN):
     """Prints on each entrance to a function."""
-    if callable(repr_len):
-        return log_enters(print)(repr_len)
-    else:
-        return log_enters(print, repr_len)
+    pass
 
 
 @decorator
 def log_exits(call, print_func, errors=True, stack=True, repr_len=REPR_LEN):
     """Logs exits from a function."""
-    signature = signature_repr(call, repr_len)
-    try:
-        result = call()
-        # NOTE: using full repr of result
-        print_func('-> %s from %s' % (smart_repr(result, max_len=None), signature))
-        return result
-    except BaseException as e:
-        if errors:
-            print_func('-> ' + _format_error(signature, e, stack))
-        raise
+    pass
 
 def print_exits(errors=True, stack=True, repr_len=REPR_LEN):
     """Prints on exits from a function."""
-    if callable(errors):
-        return log_exits(print)(errors)
-    else:
-        return log_exits(print, errors, stack, repr_len)
+    pass
 
 
 class LabeledContextDecorator(object):
@@ -182,20 +162,11 @@ print_durations = log_durations(print)
 
 def log_iter_durations(seq, print_func, label=None, unit='auto'):
     """Times processing of each item in seq."""
-    if unit not in time_formatters:
-        raise ValueError('Unknown time unit: %s. It should be ns, mks, ms, s or auto.' % unit)
-    _format_time = time_formatters[unit]
-    suffix = " of %s" % label if label else ""
-    it = iter(seq)
-    for i, item in enumerate(it):
-        start = timer()
-        yield item
-        duration = _format_time(timer() - start)
-        print_func("%s in iteration %d%s" % (duration, i, suffix))
+    pass
 
 def print_iter_durations(seq, label=None, unit='auto'):
     """Times processing of each item in seq."""
-    return log_iter_durations(seq, print, label, unit=unit)
+    pass
 
 
 ### Formatting utils

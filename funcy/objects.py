@@ -34,30 +34,7 @@ class cached_readonly(cached_property):
 
 def wrap_prop(ctx):
     """Wrap a property accessors with a context manager"""
-    def decorator(prop):
-        class WrapperProp(object):
-            def __repr__(self):
-                return repr(prop)
-
-            def __get__(self, instance, type=None):
-                if instance is None:
-                    return self
-
-                with ctx:
-                    return prop.__get__(instance, type)
-
-            if hasattr(prop, '__set__'):
-                def __set__(self, name, value):
-                    with ctx:
-                        return prop.__set__(name, value)
-
-            if hasattr(prop, '__del__'):
-                def __del__(self, name):
-                    with ctx:
-                        return prop.__del__(name)
-
-        return WrapperProp()
-    return decorator
+    pass
 
 
 def monkey(cls, name=None):
